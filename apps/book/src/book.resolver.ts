@@ -47,7 +47,7 @@ export class BookResolver {
   }
 
   @ResolveField(() => User)
-  user(@Parent() book: Book) {
+  author(@Parent() book: Book) {
     return { __typename: 'User', id: book.authorId };
   }
 }
