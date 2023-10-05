@@ -9,7 +9,7 @@ import {
   ApolloFederationDriver,
   ApolloFederationDriverConfig,
 } from '@nestjs/apollo';
-import {UserResolver} from "./user.resolver";
+import { UserResolver } from './user.resolver';
 
 @Module({
   imports: [

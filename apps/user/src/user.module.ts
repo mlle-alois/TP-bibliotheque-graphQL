@@ -9,6 +9,8 @@ import {
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { environmentConfig } from './config/user-environment.config';
 import { User } from './entities/user.entity';
+import { JwtStrategy } from './guards/jwt.strategy';
+import { CoreModule } from './core.module';
 
 @Module({
   imports: [
@@ -28,7 +30,8 @@ import { User } from './entities/user.entity';
       }),
     }),
     TypeOrmModule.forFeature([User]),
+    CoreModule,
   ],
-  providers: [UserResolver, UserService],
+  providers: [UserResolver, UserService, JwtStrategy],
 })
 export class UserModule {}
