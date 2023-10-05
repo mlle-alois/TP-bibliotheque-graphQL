@@ -10,6 +10,9 @@ import {
   ApolloFederationDriverConfig,
 } from '@nestjs/apollo';
 import { UserResolver } from './user.resolver';
+import { CoreModule } from './core.module';
+import { JwtStrategy } from './guards/jwt.strategy';
+import { User } from './entities/user.entity';
 
 @Module({
   imports: [
@@ -28,8 +31,9 @@ import { UserResolver } from './user.resolver';
         synchronize: true,
       }),
     }),
-    TypeOrmModule.forFeature([Book]),
+    TypeOrmModule.forFeature([Book, User]),
+    CoreModule,
   ],
-  providers: [BookResolver, BookService, UserResolver],
+  providers: [BookResolver, BookService, UserResolver, JwtStrategy],
 })
 export class BookModule {}
